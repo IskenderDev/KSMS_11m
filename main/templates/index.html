@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пиццерия</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Наше меню</h1>
+
+    <div class="grid">
+        {% for pizza in pizzas %}
+            <div class="card">
+                <img src="{{ pizza.photo_url }}" alt="{{ pizza.name }}">
+                <div class="card-body">
+                    <h2>{{ pizza.name }}</h2>
+                    <p>{{ pizza.description }}</p>
+                    <span class="price">{{ pizza.price }} сом</span>
+                </div>
+            </div>
+        {% empty %}
+            <p class="empty">Пицц пока нет. Добавь их через /admin</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
